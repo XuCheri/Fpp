@@ -8,10 +8,16 @@ const createWindow = () => {
     width: 800,
     height: 600,
     webPreferences: {
-      preload: path.join(__dirname, "preload.js"),
+      // preload: path.join(__dirname, "preload.js"),
+      // 书写渲染进程中的配置
+      nodeIntegration: true, //开启true这一步很重要,目的是为了vue文件中可以引入node和electron相关的API
+      contextIsolation: false, // 可以使用require方法
+      enableRemoteModule: true, // 可以使用remote方法
     },
   });
-  win.loadFile("index.html");
+  win.loadFile(path.resolve(__dirname, "./dist/index.html"));
+  // 打开开发工具
+  win.webContents.openDevTools();
 };
 
 app.whenReady().then(() => {
