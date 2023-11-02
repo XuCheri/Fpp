@@ -11,6 +11,10 @@
     "make": "electron-forge make",
     "publish": "electron-forge publish"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/XuCheri/Fpp.git"
+  },
   "author": "Cheri",
   "license": "MIT",
   "devDependencies": {
