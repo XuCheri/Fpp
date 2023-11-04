@@ -1,10 +1,11 @@
 {
   "name": "fpp",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "fuck app",
   "main": "main.js",
   "scripts": {
-    "dev": "vite build & electron .",
+    "build": "vite build & electron .",
+    "dev": "vite serve & electron .",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "electron-forge start",
     "package": "electron-forge package",
@@ -25,14 +26,15 @@
     "@electron-forge/maker-zip": "^6.4.2",
     "@electron-forge/plugin-auto-unpack-natives": "^6.4.2",
     "@electron-forge/publisher-github": "^6.4.2",
+    "@vitejs/plugin-vue": "^4.2.3",
     "electron": "^27.0.2",
     "prettier": "3.0.3",
-    "@vitejs/plugin-vue": "^4.2.3",
     "vite": "^4.4.5"
   },
   "dependencies": {
-    "vue": "^3.3.4",
+    "@toast-ui/calendar": "^2.1.3",
     "electron-squirrel-startup": "^1.0.0",
-    "update-electron-app": "^3.0.0"
+    "update-electron-app": "^3.0.0",
+    "vue": "^3.3.4"
   }
 }

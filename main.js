@@ -15,7 +15,8 @@ const createWindow = () => {
       enableRemoteModule: true, // 可以使用remote方法
     },
   });
-  win.loadFile(path.resolve(__dirname, "./dist/index.html"));
+  // win.loadFile(path.resolve(__dirname, "./dist/index.html"));
+  win.loadURL("http://localhost:8888/Users/zuoyujia/Desktop/code/Fpp/dist");
   // 打开开发工具
   win.webContents.openDevTools();
 };
