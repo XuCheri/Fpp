@@ -16,4 +16,16 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"), // 新增
     },
   },
+  build: {
+    outDir: path.resolve(__dirname, "./dist/"), // 新增
+    assetsDir: "assets", // 新增
+    sourcemap: true, // 新增
+    rollupOptions: {
+      input: {
+        main: path.resolve(__dirname, "./index.html"),
+        // nested: path.resolve(__dirname, "nested/index.html"),
+        // about: path.resolve(__dirname, "about/index.html"),
+      },
+    },
+  },
 });

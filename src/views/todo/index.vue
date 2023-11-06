@@ -43,9 +43,9 @@ import "@toast-ui/calendar/toastui-calendar.css";
 import "tui-date-picker/dist/tui-date-picker.min.css";
 import "tui-time-picker/dist/tui-time-picker.min.css";
 
-import { events } from "./mock";
-import { theme } from "./theme";
-import "./index.css";
+import { events } from "@/views/todo/mock.js";
+import { theme } from "@/views/todo/theme.js";
+import "@/views/todo/index.css";
 
 export default {
   components: {
