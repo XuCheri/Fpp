@@ -13,10 +13,12 @@ const createWindow = () => {
       nodeIntegration: true, //开启true这一步很重要,目的是为了vue文件中可以引入node和electron相关的API
       contextIsolation: false, // 可以使用require方法
       enableRemoteModule: true, // 可以使用remote方法
+      devTools: true, // 开启调试工具
     },
   });
-  // win.loadFile(path.resolve(__dirname, "./dist/index.html"));
-  win.loadURL("http://localhost:8888");
+  win.loadFile(path.resolve(__dirname, "./dist/index.html"));
+  win.loadUrl(`${process.env["VITE_DEV_SERVER_URL"]}`);
+  // win.loadURL("http://localhost:8888");
   // 打开开发工具
   win.webContents.openDevTools();
 };

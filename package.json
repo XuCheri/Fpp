@@ -5,7 +5,7 @@
   "main": "main.js",
   "scripts": {
     "build": "vite build & electron .",
-    "dev": "vite serve & electron .",
+    "dev": "vite serve",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "electron-forge start",
     "package": "electron-forge package",
@@ -29,7 +29,8 @@
     "@vitejs/plugin-vue": "^4.2.3",
     "electron": "^27.0.2",
     "prettier": "3.0.3",
-    "vite": "^4.4.5"
+    "vite": "^4.4.5",
+    "vite-plugin-electron": "^0.15.3"
   },
   "dependencies": {
     "@toast-ui/calendar": "^2.1.3",

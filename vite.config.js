@@ -1,10 +1,16 @@
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
 import path from "path";
+import electron from "vite-plugin-electron";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [vue()],
+  plugins: [
+    vue(),
+    electron({
+      entry: path.resolve(__dirname, "./dist-electron/main.js"),
+    }),
+  ],
   // base: path.resolve(__dirname, "./dist/"), // 新增
   server: {
     port: 8888,
