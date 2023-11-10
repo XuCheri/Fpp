@@ -175,11 +175,15 @@ export default {
     initDatePicker() {
       this.datePickerInstance = new DatePicker(this.$refs.datepicker, {
         date: new Date(),
+        usageStatistics: false,
         input: {
           element: "#datepicker-input",
           format: "yyyy-MM-dd",
         },
         // options
+      });
+      this.datePickerInstance.on("change", () => {
+        console.log(`Selected date: ${this.datePickerInstance.getDate()}`);
       });
     },
     /**
@@ -188,6 +192,17 @@ export default {
      */
     changeView(viewName) {
       this.calendarInstance.changeView(viewName);
+      switch (viewName) {
+        case "day":
+          this.datePickerInstance.setType("date");
+          break;
+        case "week":
+          this.datePickerInstance.setType("month");
+          break;
+        case "month":
+          this.datePickerInstance.setType("year");
+          break;
+      }
     },
     /**
      * 销毁日历
@@ -200,6 +215,7 @@ export default {
      */
     today() {
       this.calendarInstance.today();
+      this.datePickerInstance.setDate(new Date());
     },
     /**
      * 上一视图
@@ -251,7 +267,7 @@ export default {
 }
 </style>
 <style scoped>
-::v-deep .tui-datepicker {
+:deep(.tui-datepicker) {
   z-index: 1;
 }
 </style>
