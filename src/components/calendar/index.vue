@@ -1,31 +1,28 @@
 <template>
   <div class="container">
-    <div>
+    <div class="btns">
       <div class="buttons">
         <button type="button" @click="changeView('day')">Day</button>
         <button type="button" @click="changeView('week')">Week</button>
         <button type="button" @click="changeView('month')">Month</button>
       </div>
-    </div>
-
-    <div>
+      <div class="tui-datepicker-input tui-datetime-input tui-has-focus">
+        <input type="text" id="datepicker-input" aria-label="Date-Time" />
+        <span class="tui-ico-date"></span>
+      </div>
       <div class="buttons">
-        <button type="button" @click="today()">Today</button>
         <button type="button" @click="prev()">Prev</button>
+        <button type="button" @click="today()">Today</button>
         <button type="button" @click="next()">Next</button>
       </div>
     </div>
     <div ref="datepicker" style="margin-top: -1px"></div>
 
-    <div class="tui-datepicker-input tui-datetime-input tui-has-focus">
-      <input type="text" id="datepicker-input" aria-label="Date-Time" />
-      <span class="tui-ico-date"></span>
-    </div>
-    <div>
+    <!-- <div>
       <div class="buttons">
         <button type="button" @click="clear()">清除所有事件</button>
       </div>
-    </div>
+    </div> -->
 
     <!-- 日历容器 -->
     <div ref="calendar" id="calendar" />
@@ -183,7 +180,7 @@ export default {
         // options
       });
       this.datePickerInstance.on("change", () => {
-        console.log(`Selected date: ${this.datePickerInstance.getDate()}`);
+        this.calendarInstance.setDate(this.datePickerInstance.getDate());
       });
     },
     /**
@@ -195,12 +192,15 @@ export default {
       switch (viewName) {
         case "day":
           this.datePickerInstance.setType("date");
+          this.datePickerInstance.setDateFormat("yyyy-MM-dd");
           break;
         case "week":
           this.datePickerInstance.setType("month");
+          this.datePickerInstance.setDateFormat("yyyy-MM-dd");
           break;
         case "month":
-          this.datePickerInstance.setType("year");
+          this.datePickerInstance.setType("month");
+          this.datePickerInstance.setDateFormat("yyyy-MM");
           break;
       }
     },
@@ -240,6 +240,10 @@ export default {
 .container {
   width: 100%;
   height: 100%;
+  .btns {
+    display: flex;
+    justify-content: space-between;
+  }
   #calendar {
     height: 65vh;
     min-height: 800px;
