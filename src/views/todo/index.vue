@@ -8,19 +8,35 @@
       :use-form-popup="true"
       :use-detail-popup="true"
       :week="{
-        showTimezoneCollapseButton: true,
-        timezonesCollapsed: false,
-        eventView: true,
-        taskView: true,
+        startDayOfWeek: 1, //周开始的第一天。可用值为：0（周日）到6（周六）。
+        dayNames: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'], //一周的名称。
+        workweek: false, //是否仅显示工作日。
+        showTimezoneCollapseButton: true, // 是否显示时区折叠按钮。
+        timezonesCollapsed: false, // 是否折叠时区。
+        hourStart: 0, // 一天开始的小时。
+        hourEnd: 24, // 一天结束的小时。
+        narrowWeekend: false, // 是否将周末的宽度设置为窄。
+        eventView: true, // 是否显示事件视图。
+        taskView: true, // 是否显示任务视图。
+        collapseDuplicateEvents: false, // 是否折叠重复的事件。
       }"
-      :month="{ startDayOfWeek: 1 }"
+      :month="{
+        startDayOfWeek: 1, // 周开始的第一天
+        dayNames: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'], // 一周的名称
+        workweek: false, // 是否仅显示工作日
+        narrowWeekend: false, // 是否将周末的宽度设置为窄
+        visibleWeeksCount: 0, // 可见周数,0表示自动
+      }"
       :timezone="{ zones }"
       :theme="theme"
       :template="{
         milestone: getTemplateForMilestone,
         allday: getTemplateForAllday,
       }"
-      :grid-selection="true"
+      :grid-selection="{
+        enableDbClick: true, //是否启用双击选择
+        enableClick: true, //是否启用单击选择
+      }"
       :calendars="calendars"
       :events="events"
       @selectDateTime="onSelectDateTime"
