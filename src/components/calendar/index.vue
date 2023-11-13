@@ -67,7 +67,7 @@ export default {
     theme: Object, //主题配置项
     template: Object, //模板配置项
     calendars: Array, //日历配置项
-    events: Array, //事件配置项
+    // events: Array, //事件配置项
   },
   data() {
     return {
@@ -132,7 +132,7 @@ export default {
     // 初始化日历
     this.initCalendar();
     this.initDatePicker();
-    this.calendarInstance.createEvents(this.events);
+    // this.calendarInstance.createEvents(this.events);
     this.calendarInstance.setTheme(this.theme);
   },
   methods: {
@@ -149,12 +149,11 @@ export default {
       this.calendarInstance = new Calendar(this.$refs.calendar, this.options);
       // Creating an event through popup
       this.calendarInstance.on("beforeCreateEvent", (eventObj) => {
-        this.calendarInstance.createEvents([
-          {
-            ...eventObj,
-            id: this.id++,
-          },
-        ]);
+        const event = {
+          ...eventObj,
+          id: this.id++,
+        };
+        this.calendarInstance.createEvents([event]);
       });
       // Basic example of updating an event
       this.calendarInstance.on("beforeUpdateEvent", ({ event, changes }) => {

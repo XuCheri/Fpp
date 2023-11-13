@@ -1,10 +1,8 @@
-// import Vue from "vue";
 import { createRouter, createWebHashHistory } from "vue-router";
-// Vue.use(Router);
 const routes = [
   {
     path: "/",
-    redirect: "/home",
+    redirect: "/todo",
   },
   {
     path: "/home",
@@ -22,16 +20,9 @@ const routes = [
     component: () => import("@/views/todo/index.vue"),
   },
 ];
-// const createRouter = () =>
-//   new Router({
-//     // mode: 'history', // require service support
-//     scrollBehavior: () => ({ y: 0 }),
-//     routes: route,
-//   });
 
 const router = createRouter({
   history: createWebHashHistory(),
   routes,
 });
-// const router = createRouter();
 export default router;
